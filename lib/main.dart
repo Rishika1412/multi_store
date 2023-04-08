@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:multi_store/auth/customer_login.dart';
 import 'package:multi_store/auth/customer_signup.dart';
 import 'package:multi_store/auth/supplier_login.dart';
