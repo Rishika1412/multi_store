@@ -58,7 +58,7 @@ dependencies:
   sn_progress_dialog: ^1.0.8
   staggered_grid_view_flutter: ^0.0.4
   uuid: ^3.0.6
-  flutter_stripe: ^9.0.0+1
+  flutter_stripe: ^3.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
