@@ -12,7 +12,7 @@ import 'package:multi_store/widgets/cyan_button.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:sn_progress_dialog/sn_progress_dialog.dart';
-
+import 'package:flutter_stripe/flutter_stripe.dart';
 //import 'package:http/http.dart' as http;
 
 class PaymentScreen extends StatefulWidget {
