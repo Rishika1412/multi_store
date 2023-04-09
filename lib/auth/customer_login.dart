@@ -181,7 +181,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
                                   passwordVisible
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Colors.purple,
+                                  color: Colors.cyan,
                                 )),
                             labelText: 'Password',
                             hintText: 'Enter your password',
@@ -212,7 +212,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
                       processing == true
                           ? const Center(
                               child: CircularProgressIndicator(
-                              color: Colors.purple,
+                              color: Colors.cyan,
                             ))
                           : AuthMainButton(
                               mainButtonLabel: 'Log In',
@@ -234,11 +234,11 @@ class _CustomerLoginState extends State<CustomerLogin> {
   }
 
   Widget divider() {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: const [
           SizedBox(
             width: 80,
             child: Divider(
@@ -273,9 +273,9 @@ class _CustomerLoginState extends State<CustomerLogin> {
           onPressed: () {
             signInWithGoogle();
           },
-          child: const Row(
+          child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
+              children: const [
                 Icon(
                   FontAwesomeIcons.google,
                   color: Colors.red,

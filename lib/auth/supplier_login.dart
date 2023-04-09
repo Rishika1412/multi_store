@@ -152,7 +152,7 @@ class _SupplierLoginState extends State<SupplierLogin> {
                                   passwordVisible
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Colors.purple,
+                                  color: Colors.cyan,
                                 )),
                             labelText: 'Password',
                             hintText: 'Enter your password',
@@ -183,7 +183,7 @@ class _SupplierLoginState extends State<SupplierLogin> {
                       processing == true
                           ? const Center(
                               child: CircularProgressIndicator(
-                              color: Colors.purple,
+                              color: Colors.cyan,
                             ))
                           : AuthMainButton(
                               mainButtonLabel: 'Log In',

@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_store/providers/auht_repo.dart';
 import 'package:multi_store/widgets/auth_widgets.dart';
@@ -170,60 +171,66 @@ class _SupplierRegisterState extends State<SupplierRegister> {
                   child: Column(
                     children: [
                       const AuthHeaderLabel(headerLabel: 'Sign Up'),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 40),
-                            child: CircleAvatar(
-                              radius: 60,
-                              backgroundColor: Colors.purpleAccent,
-                              backgroundImage: _imageFile == null
-                                  ? null
-                                  : FileImage(File(_imageFile!.path)),
+                      if (_imageFile == null)
+                        Column(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 40),
+                              child: CircleAvatar(
+                                radius: 60,
+                                backgroundColor: Colors.cyanAccent,
+                                backgroundImage:
+                                    AssetImage('images/inapp/guest.jpg'),
+                              ),
                             ),
-                          ),
-                          Column(
-                            children: [
-                              Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.purple,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(15),
-                                        topRight: Radius.circular(15))),
-                                child: IconButton(
-                                  icon: const Icon(
-                                    Icons.camera_alt,
-                                    color: Colors.white,
-                                  ),
-                                  onPressed: () {
-                                    _pickImageFromCamera();
-                                  },
-                                ),
+                            RichText(
+                              text: TextSpan(
+                                  text: 'Gallery   | ',
+                                  style: TextStyle(color: Colors.cyan),
+                                  children: [
+                                    TextSpan(
+                                        text: ' Camera',
+                                        style: TextStyle(color: Colors.cyan),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap =
+                                              (() => _pickImageFromCamera())),
+                                  ],
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = (() => _pickImageFromGallery())),
+                            )
+                          ],
+                        ),
+                      if (_imageFile != null)
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 40),
+                              child: CircleAvatar(
+                                radius: 60,
+                                backgroundColor: Colors.cyanAccent,
+                                backgroundImage:
+                                    FileImage(File(_imageFile!.path)),
                               ),
-                              const SizedBox(
-                                height: 6,
-                              ),
-                              Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.purple,
-                                    borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(15),
-                                        bottomRight: Radius.circular(15))),
-                                child: IconButton(
-                                  icon: const Icon(
-                                    Icons.photo,
-                                    color: Colors.white,
-                                  ),
-                                  onPressed: () {
-                                    _pickImageFromGallery();
-                                  },
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                  text: 'Gallery   | ',
+                                  style: TextStyle(color: Colors.cyan),
+                                  children: [
+                                    TextSpan(
+                                        text: '  Camera',
+                                        style: TextStyle(color: Colors.cyan),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap =
+                                              (() => _pickImageFromCamera())),
+                                  ],
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = (() => _pickImageFromGallery())),
+                            )
+                          ],
+                        ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: TextFormField(
@@ -289,7 +296,7 @@ class _SupplierRegisterState extends State<SupplierRegister> {
                                   passwordVisible
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Colors.purple,
+                                  color: Colors.cyan,
                                 )),
                             labelText: 'Password',
                             hintText: 'Enter your password',
@@ -306,7 +313,7 @@ class _SupplierRegisterState extends State<SupplierRegister> {
                       ),
                       processing == true
                           ? const CircularProgressIndicator(
-                              color: Colors.purple,
+                              color: Colors.cyan,
                             )
                           : AuthMainButton(
                               mainButtonLabel: 'Sign Up',

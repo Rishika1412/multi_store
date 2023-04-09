@@ -141,101 +141,102 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SliverToBoxAdapter(
                         child: Column(
                       children: [
-                        Container(
-                          height: 80,
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.black54,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(30),
-                                        bottomLeft: Radius.circular(30))),
-                                child: TextButton(
-                                  child: SizedBox(
-                                    height: 40,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.2,
-                                    child: const Center(
-                                      child: Text(
-                                        'Cart',
-                                        style: TextStyle(
-                                            color: Colors.yellow, fontSize: 20),
-                                      ),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const CartScreen(
-                                                  back: AppBarBackButton(),
-                                                )));
-                                  },
-                                ),
-                              ),
-                              Container(
-                                color: Colors.yellow,
-                                child: TextButton(
-                                  child: SizedBox(
-                                    height: 40,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.2,
-                                    child: const Center(
-                                      child: Text(
-                                        'Orders',
-                                        style: TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 20),
-                                      ),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const CustomerOrders()));
-                                  },
-                                ),
-                              ),
-                              Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.black54,
-                                    borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(30),
-                                        bottomRight: Radius.circular(30))),
-                                child: TextButton(
-                                  child: SizedBox(
-                                    height: 40,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.2,
-                                    child: const Center(
-                                      child: Text(
-                                        'Wishlist',
-                                        style: TextStyle(
-                                            color: Colors.yellow, fontSize: 20),
-                                      ),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const WishlistScreen()));
-                                  },
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                        // Container(
+                        //   height: 80,
+                        //   width: MediaQuery.of(context).size.width * 0.9,
+                        //   decoration: BoxDecoration(
+                        //       color: Colors.white,
+                        //       borderRadius: BorderRadius.circular(50)),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        //     children: [
+                        //       Container(
+                        //         decoration: const BoxDecoration(
+                        //             color: Colors.black54,
+                        //             borderRadius: BorderRadius.only(
+                        //                 topLeft: Radius.circular(30),
+                        //                 bottomLeft: Radius.circular(30))),
+                        //         child: TextButton(
+                        //           child: SizedBox(
+                        //             height: 40,
+                        //             width:
+                        //                 MediaQuery.of(context).size.width * 0.2,
+                        //             child: const Center(
+                        //               child: Text(
+                        //                 'Cart',
+                        //                 style: TextStyle(
+                        //                     color: Colors.yellow, fontSize: 20),
+                        //               ),
+                        //             ),
+                        //           ),
+                        //           onPressed: () {
+                        //             Navigator.push(
+                        //                 context,
+                        //                 MaterialPageRoute(
+                        //                     builder: (context) =>
+                        //                         const CartScreen(
+                        //                           back: AppBarBackButton(),
+                        //                         )));
+                        //           },
+                        //         ),
+                        //       ),
+                        //       Container(
+                        //         color: Colors.yellow,
+                        //         child: TextButton(
+                        //           child: SizedBox(
+                        //             height: 40,
+                        //             width:
+                        //                 MediaQuery.of(context).size.width * 0.2,
+                        //             child: const Center(
+                        //               child: Text(
+                        //                 'Orders',
+                        //                 style: TextStyle(
+                        //                     color: Colors.black54,
+                        //                     fontSize: 20),
+                        //               ),
+                        //             ),
+                        //           ),
+                        //           onPressed: () {
+                        //             Navigator.push(
+                        //                 context,
+                        //                 MaterialPageRoute(
+                        //                     builder: (context) =>
+                        //                         const CustomerOrders()));
+                        //           },
+                        //         ),
+                        //       ),
+                        //       Container(
+                        //         decoration: const BoxDecoration(
+                        //             color: Colors.black54,
+                        //             borderRadius: BorderRadius.only(
+                        //                 topRight: Radius.circular(30),
+                        //                 bottomRight: Radius.circular(30))),
+                        //         child: TextButton(
+                        //           child: SizedBox(
+                        //             height: 40,
+                        //             width:
+                        //                 MediaQuery.of(context).size.width * 0.2,
+                        //             child: const Center(
+                        //               child: Text(
+                        //                 'Wishlist',
+                        //                 style: TextStyle(
+                        //                     color: Colors.yellow, fontSize: 20),
+                        //               ),
+                        //             ),
+                        //           ),
+                        //           onPressed: () {
+                        //             Navigator.push(
+                        //                 context,
+                        //                 MaterialPageRoute(
+                        //                     builder: (context) =>
+                        //                         const WishlistScreen()));
+                        //           },
+                        //         ),
+                        //       )
+                        //     ],
+                        //   ),
+                        // ),
+
                         Container(
                           padding: const EdgeInsets.only(top: 10),
                           color: Colors.grey.shade300,

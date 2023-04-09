@@ -158,7 +158,7 @@ var passwordFormDecoration = InputDecoration(
   hintText: 'Enter your full name',
   border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
   enabledBorder: OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.purple, width: 1),
+      borderSide: const BorderSide(color: Colors.cyan, width: 1),
       borderRadius: BorderRadius.circular(6)),
   focusedBorder: OutlineInputBorder(
       borderSide: const BorderSide(color: Colors.deepPurpleAccent, width: 2),
