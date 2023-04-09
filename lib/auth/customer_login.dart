@@ -234,11 +234,11 @@ class _CustomerLoginState extends State<CustomerLogin> {
   }
 
   Widget divider() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           SizedBox(
             width: 80,
             child: Divider(
@@ -273,9 +273,9 @@ class _CustomerLoginState extends State<CustomerLogin> {
           onPressed: () {
             signInWithGoogle();
           },
-          child: Row(
+          child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
+              children: [
                 Icon(
                   FontAwesomeIcons.google,
                   color: Colors.red,

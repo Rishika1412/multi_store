@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:multi_store/auth/customer_login.dart';
 import 'package:multi_store/auth/customer_signup.dart';
 import 'package:multi_store/auth/supplier_login.dart';
@@ -12,18 +11,20 @@ import 'package:multi_store/main_screens/supplier_home.dart';
 import 'package:multi_store/main_screens/welcome_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:multi_store/providers/cart_provider.dart';
+import 'package:multi_store/providers/stripe_id.dart';
 //import 'package:multi_store/providers/stripe_id.dart';
 import 'package:multi_store/providers/wish_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp(options: Default);
-  // Stripe.publishableKey = '';
-  // //stripePublishableKey;
-  // Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
-  // Stripe.urlScheme = 'flutterstripe';
-  // await Stripe.instance.applySettings();
+  Stripe.publishableKey = stripePublishableKey;
+  //stripePublishableKey;
+  Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
+  Stripe.urlScheme = 'flutterstripe';
+  await Stripe.instance.applySettings();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => Cart()),

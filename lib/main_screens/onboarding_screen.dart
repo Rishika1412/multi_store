@@ -19,8 +19,8 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
         showSkipButton: true,
         showDoneButton: true,
         showNextButton: true,
-        done: Text('Done'),
-        skip: Text('Skip'),
+        done: const Text('Done'),
+        skip: const Text('Skip'),
         next: const Icon(Icons.navigate_next_rounded),
         baseBtnStyle: TextButton.styleFrom(
           backgroundColor: Colors.transparent,
@@ -32,7 +32,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
           await Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => WelcomeScreen(),
+              builder: (context) => const WelcomeScreen(),
             ),
           );
         },
@@ -40,7 +40,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
           await Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => WelcomeScreen(),
+              builder: (context) => const WelcomeScreen(),
             ),
           );
         },
@@ -62,7 +62,7 @@ List<PageViewModel> introPages(BuildContext context) => [
             const SizedBox(
               height: 40,
             ),
-            Text(
+            const Text(
               'Sell Online',
               style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -70,7 +70,7 @@ List<PageViewModel> introPages(BuildContext context) => [
             const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               'Local shopkeepers can sell their products in online dukan and track their income.',
               style: TextStyle(fontSize: 15),
               textAlign: TextAlign.center,
@@ -94,7 +94,7 @@ List<PageViewModel> introPages(BuildContext context) => [
             const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               'Buy',
               style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -102,7 +102,7 @@ List<PageViewModel> introPages(BuildContext context) => [
             const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               'Shop online with our app with ease and find products you need to buy daily.',
               style: TextStyle(fontSize: 15),
               textAlign: TextAlign.center,
@@ -127,7 +127,7 @@ List<PageViewModel> introPages(BuildContext context) => [
             const SizedBox(
               height: 50,
             ),
-            Text(
+            const Text(
               'Discover new local products',
               style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -135,7 +135,7 @@ List<PageViewModel> introPages(BuildContext context) => [
             const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               'Find your favourite products from multiple local stores.',
               style: TextStyle(fontSize: 15),
               textAlign: TextAlign.center,
@@ -159,7 +159,7 @@ List<PageViewModel> introPages(BuildContext context) => [
             const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               'Easy & Safe Payment',
               style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -167,7 +167,7 @@ List<PageViewModel> introPages(BuildContext context) => [
             const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               'Pay for the products you buy safely & easily.',
               style: TextStyle(fontSize: 15),
               textAlign: TextAlign.center,

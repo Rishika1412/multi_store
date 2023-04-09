@@ -1,19 +1,21 @@
 // ignore_for_file: avoid_print, deprecated_member_use
 
-//import 'dart:convert';
+import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:multi_store/providers/cart_provider.dart';
+import 'package:multi_store/providers/stripe_id.dart';
 import 'package:multi_store/widgets/appbar_widgets.dart';
 import 'package:multi_store/widgets/cyan_button.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:sn_progress_dialog/sn_progress_dialog.dart';
 
-//import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;
 
 class PaymentScreen extends StatefulWidget {
   final String name;
@@ -346,11 +348,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     ));
                           } else if (selectedValue == 2) {
                             print('visa');
-/* 
+
                             int payment = totalPaid.round();
                             int pay = payment * 100;
 
-                            await makePayment(data, pay.toString()); */
+                            await makePayment(data, pay.toString());
                           } else if (selectedValue == 3) {
                             print('paypal');
                           }
@@ -367,8 +369,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           );
         });
   }
-}
-/* 
+
   Map<String, dynamic>? paymentIntentData;
   Future<void> makePayment(dynamic data, String total) async {
     try {
@@ -467,4 +468,3 @@ class _PaymentScreenState extends State<PaymentScreen> {
     }
   }
 }
- */

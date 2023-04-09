@@ -139,149 +139,251 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 10),
-                        color: Colors.grey.shade300,
                         child: Column(
-                          children: [
-                            Container(
-                              color: Colors.grey.shade300,
-                              child: Column(
-                                children: [
-                                  const ProfileHeaderLabel(
-                                    headerLabel: '  Account Info.  ',
+                      children: [
+                        Container(
+                          height: 80,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(50)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                decoration: const BoxDecoration(
+                                    color: Colors.black54,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(30),
+                                        bottomLeft: Radius.circular(30))),
+                                child: TextButton(
+                                  child: SizedBox(
+                                    height: 40,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.2,
+                                    child: const Center(
+                                      child: Text(
+                                        'Cart',
+                                        style: TextStyle(
+                                            color: Colors.yellow, fontSize: 20),
+                                      ),
+                                    ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: SizedBox(
-                                      height: 260,
-                                      child: Card(
-                                        elevation: 6,
-                                        color:
-                                            Color.fromARGB(255, 245, 244, 244),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: Column(
-                                          children: [
-                                            RepeatedListTile(
-                                                icon: Icons.email,
-                                                subTitle: data['email'] == ''
-                                                    ? 'example@email.com'
-                                                    : data['email'],
-                                                title: 'Email Address'),
-                                            const GreyDivider(),
-                                            RepeatedListTile(
-                                                icon: Icons.phone,
-                                                subTitle: data['phone'] == ''
-                                                    ? 'example: +91 12345 54321'
-                                                    : data['phone'],
-                                                title: 'Phone No.'),
-                                            const GreyDivider(),
-                                            RepeatedListTile(
-                                              onPressed: FirebaseAuth.instance
-                                                      .currentUser!.isAnonymous
-                                                  ? null
-                                                  : () {
-                                                      Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  const AddressBook()));
-                                                    },
-                                              title: 'Address',
-                                              icon: Icons.location_pin,
-                                              subTitle: userAddress(data),
-                                              /*  data['address'] == ''
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CartScreen(
+                                                  back: AppBarBackButton(),
+                                                )));
+                                  },
+                                ),
+                              ),
+                              Container(
+                                color: Colors.yellow,
+                                child: TextButton(
+                                  child: SizedBox(
+                                    height: 40,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.2,
+                                    child: const Center(
+                                      child: Text(
+                                        'Orders',
+                                        style: TextStyle(
+                                            color: Colors.black54,
+                                            fontSize: 20),
+                                      ),
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CustomerOrders()));
+                                  },
+                                ),
+                              ),
+                              Container(
+                                decoration: const BoxDecoration(
+                                    color: Colors.black54,
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(30),
+                                        bottomRight: Radius.circular(30))),
+                                child: TextButton(
+                                  child: SizedBox(
+                                    height: 40,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.2,
+                                    child: const Center(
+                                      child: Text(
+                                        'Wishlist',
+                                        style: TextStyle(
+                                            color: Colors.yellow, fontSize: 20),
+                                      ),
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const WishlistScreen()));
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(top: 10),
+                          color: Colors.grey.shade300,
+                          child: Column(
+                            children: [
+                              Container(
+                                color: Colors.grey.shade300,
+                                child: Column(
+                                  children: [
+                                    const ProfileHeaderLabel(
+                                      headerLabel: '  Account Info.  ',
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: SizedBox(
+                                        height: 260,
+                                        child: Card(
+                                          elevation: 6,
+                                          color: Color.fromARGB(
+                                              255, 245, 244, 244),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: Column(
+                                            children: [
+                                              RepeatedListTile(
+                                                  icon: Icons.email,
+                                                  subTitle: data['email'] == ''
+                                                      ? 'example@email.com'
+                                                      : data['email'],
+                                                  title: 'Email Address'),
+                                              const GreyDivider(),
+                                              RepeatedListTile(
+                                                  icon: Icons.phone,
+                                                  subTitle: data['phone'] == ''
+                                                      ? 'example: +91 12345 54321'
+                                                      : data['phone'],
+                                                  title: 'Phone No.'),
+                                              const GreyDivider(),
+                                              RepeatedListTile(
+                                                onPressed: FirebaseAuth
+                                                        .instance
+                                                        .currentUser!
+                                                        .isAnonymous
+                                                    ? null
+                                                    : () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        const AddressBook()));
+                                                      },
+                                                title: 'Address',
+                                                icon: Icons.location_pin,
+                                                subTitle: userAddress(data),
+                                                /*  data['address'] == ''
                                                   ? 'example : New Jersey - USA'
                                                   : data['address'], */
-                                            ),
-                                          ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  const ProfileHeaderLabel(
-                                      headerLabel: '  Account Settings  '),
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: SizedBox(
-                                      height: 210,
-                                      child: Card(
-                                        elevation: 6,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        color:
-                                            Color.fromARGB(255, 245, 244, 244),
-                                        child: Column(
-                                          children: [
-                                            RepeatedListTile(
-                                              title: 'Edit Profile',
-                                              subTitle: '',
-                                              icon: Icons.edit,
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: ((context) =>
-                                                            EditProfile())));
-                                              },
-                                            ),
-                                            const GreyDivider(),
-                                            RepeatedListTile(
-                                              title: 'Change Password',
-                                              icon: Icons.lock,
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const UpdatePassword()));
-                                              },
-                                            ),
-                                            const GreyDivider(),
-                                            RepeatedListTile(
-                                              title: 'Log Out',
-                                              icon: Icons.logout,
-                                              onPressed: () async {
-                                                MyAlertDilaog.showMyDialog(
-                                                    context: context,
-                                                    title: 'Log Out',
-                                                    content:
-                                                        'Are you sure to log out ?',
-                                                    tabNo: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    tabYes: () async {
-                                                      await AuthRepo.logOut();
-
-                                                      await Future.delayed(
-                                                              const Duration(
-                                                                  microseconds:
-                                                                      100))
-                                                          .whenComplete(() {
+                                    const ProfileHeaderLabel(
+                                        headerLabel: '  Account Settings  '),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: SizedBox(
+                                        height: 210,
+                                        child: Card(
+                                          elevation: 6,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          color: Color.fromARGB(
+                                              255, 245, 244, 244),
+                                          child: Column(
+                                            children: [
+                                              RepeatedListTile(
+                                                title: 'Edit Profile',
+                                                subTitle: '',
+                                                icon: Icons.edit,
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: ((context) =>
+                                                              EditProfile())));
+                                                },
+                                              ),
+                                              const GreyDivider(),
+                                              RepeatedListTile(
+                                                title: 'Change Password',
+                                                icon: Icons.lock,
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const UpdatePassword()));
+                                                },
+                                              ),
+                                              const GreyDivider(),
+                                              RepeatedListTile(
+                                                title: 'Log Out',
+                                                icon: Icons.logout,
+                                                onPressed: () async {
+                                                  MyAlertDilaog.showMyDialog(
+                                                      context: context,
+                                                      title: 'Log Out',
+                                                      content:
+                                                          'Are you sure to log out ?',
+                                                      tabNo: () {
                                                         Navigator.pop(context);
-                                                        Navigator
-                                                            .pushReplacementNamed(
-                                                                context,
-                                                                '/welcome_screen');
+                                                      },
+                                                      tabYes: () async {
+                                                        await AuthRepo.logOut();
+
+                                                        await Future.delayed(
+                                                                const Duration(
+                                                                    microseconds:
+                                                                        100))
+                                                            .whenComplete(() {
+                                                          Navigator.pop(
+                                                              context);
+                                                          Navigator
+                                                              .pushReplacementNamed(
+                                                                  context,
+                                                                  '/welcome_screen');
+                                                        });
                                                       });
-                                                    });
-                                              },
-                                            ),
-                                          ],
+                                                },
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    )
+                      ],
+                    ))
                   ],
                 ),
               ],
