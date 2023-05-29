@@ -14,9 +14,10 @@ class _StoresScreenState extends State<StoresScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blueGrey.shade100.withOpacity(0.5),
       appBar: AppBar(
-        elevation: 0,
+        // automaticallyImplyLeading: false,
+        elevation: 6,
         backgroundColor: Colors.white,
         title: const AppBarTitle(
           title: 'Stores',

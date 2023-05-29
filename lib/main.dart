@@ -17,6 +17,8 @@ import 'package:multi_store/providers/wish_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
+import 'customer_screens/customer_orders.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Stripe.publishableKey = stripePublishableKey;
@@ -54,6 +56,7 @@ class MyApp extends StatelessWidget {
         '/onboarding_screen': (context) => const Onboardingscreen(),
         '/customer_home': (context) => const CustomerHomeScreen(),
         '/supplier_home': (context) => const SupplierHomeScreen(),
+        '/customer_order': (context) => const CustomerOrders(),
         '/customer_signup': (context) => const CustomerRegister(),
         '/customer_login': (context) => const CustomerLogin(),
         '/supplier_signup': (context) => const SupplierRegister(),

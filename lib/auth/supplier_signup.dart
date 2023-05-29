@@ -159,169 +159,184 @@ class _SupplierRegisterState extends State<SupplierRegister> {
     return ScaffoldMessenger(
       key: _scaffoldKey,
       child: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: SingleChildScrollView(
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              reverse: true,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      const AuthHeaderLabel(headerLabel: 'Sign Up'),
-                      if (_imageFile == null)
-                        Column(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 40),
-                              child: CircleAvatar(
-                                radius: 60,
-                                backgroundColor: Colors.cyanAccent,
-                                backgroundImage:
-                                    AssetImage('images/inapp/guest.jpg'),
+        body: Container(
+          height: 800,
+          width: 200,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/onboard/bg3.jpg'),
+                  //fit: BoxFit.cover
+                  opacity: 0.5,
+                  fit: BoxFit.fitHeight)),
+          // ),
+          constraints: const BoxConstraints.expand(),
+          child: SafeArea(
+            child: Center(
+              child: SingleChildScrollView(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
+                reverse: true,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        const AuthHeaderLabel(headerLabel: 'Sign Up'),
+                        if (_imageFile == null)
+                          Column(
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: 40),
+                                child: CircleAvatar(
+                                  radius: 60,
+                                  backgroundColor: Colors.cyanAccent,
+                                  backgroundImage:
+                                      AssetImage('images/inapp/guest.jpg'),
+                                ),
                               ),
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                  text: 'Gallery   | ',
-                                  style: TextStyle(color: Colors.cyan),
-                                  children: [
-                                    TextSpan(
-                                        text: ' Camera',
-                                        style: TextStyle(color: Colors.cyan),
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap =
-                                              (() => _pickImageFromCamera())),
-                                  ],
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = (() => _pickImageFromGallery())),
-                            )
-                          ],
-                        ),
-                      if (_imageFile != null)
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 40),
-                              child: CircleAvatar(
-                                radius: 60,
-                                backgroundColor: Colors.cyanAccent,
-                                backgroundImage:
-                                    FileImage(File(_imageFile!.path)),
-                              ),
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                  text: 'Gallery   | ',
-                                  style: TextStyle(color: Colors.cyan),
-                                  children: [
-                                    TextSpan(
-                                        text: '  Camera',
-                                        style: TextStyle(color: Colors.cyan),
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap =
-                                              (() => _pickImageFromCamera())),
-                                  ],
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = (() => _pickImageFromGallery())),
-                            )
-                          ],
-                        ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: TextFormField(
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'please enter your full name';
-                            }
-                            return null;
-                          },
-                          onChanged: (value) {
-                            storeName = value;
-                          },
-                          decoration: textFormDecoration.copyWith(
-                            labelText: 'Full Name',
-                            hintText: 'Enter your Full Name',
+                              RichText(
+                                text: TextSpan(
+                                    text: 'Gallery   | ',
+                                    style: TextStyle(color: Colors.cyan),
+                                    children: [
+                                      TextSpan(
+                                          text: ' Camera',
+                                          style: TextStyle(color: Colors.cyan),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap =
+                                                (() => _pickImageFromCamera())),
+                                    ],
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap =
+                                          (() => _pickImageFromGallery())),
+                              )
+                            ],
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: TextFormField(
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'please enter your email ';
-                            } else if (value.isValidEmail() == false) {
-                              return 'invalid email';
-                            } else if (value.isValidEmail() == true) {
+                        if (_imageFile != null)
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: 40),
+                                child: CircleAvatar(
+                                  radius: 60,
+                                  backgroundColor: Colors.cyanAccent,
+                                  backgroundImage:
+                                      FileImage(File(_imageFile!.path)),
+                                ),
+                              ),
+                              RichText(
+                                text: TextSpan(
+                                    text: 'Gallery   | ',
+                                    style: TextStyle(color: Colors.cyan),
+                                    children: [
+                                      TextSpan(
+                                          text: '  Camera',
+                                          style: TextStyle(color: Colors.cyan),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap =
+                                                (() => _pickImageFromCamera())),
+                                    ],
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap =
+                                          (() => _pickImageFromGallery())),
+                              )
+                            ],
+                          ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'please enter your full name';
+                              }
                               return null;
-                            }
-                            return null;
-                          },
-                          onChanged: (value) {
-                            email = value;
-                          },
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: textFormDecoration.copyWith(
-                            labelText: 'Email Address',
-                            hintText: 'Enter your email',
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: TextFormField(
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'please enter your password';
-                            }
-                            return null;
-                          },
-                          onChanged: (value) {
-                            password = value;
-                          },
-                          obscureText: passwordVisible,
-                          decoration: textFormDecoration.copyWith(
-                            suffixIcon: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    passwordVisible = !passwordVisible;
-                                  });
-                                },
-                                icon: Icon(
-                                  passwordVisible
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color: Colors.cyan,
-                                )),
-                            labelText: 'Password',
-                            hintText: 'Enter your password',
-                          ),
-                        ),
-                      ),
-                      HaveAccount(
-                        haveAccount: 'already have account? ',
-                        actionLabel: 'Log In',
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, '/supplier_login');
-                        },
-                      ),
-                      processing == true
-                          ? const CircularProgressIndicator(
-                              color: Colors.cyan,
-                            )
-                          : AuthMainButton(
-                              mainButtonLabel: 'Sign Up',
-                              onPressed: () {
-                                signUp();
-                              },
+                            },
+                            onChanged: (value) {
+                              storeName = value;
+                            },
+                            decoration: textFormDecoration.copyWith(
+                              labelText: 'Full Name',
+                              hintText: 'Enter your Full Name',
                             ),
-                    ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'please enter your email ';
+                              } else if (value.isValidEmail() == false) {
+                                return 'invalid email';
+                              } else if (value.isValidEmail() == true) {
+                                return null;
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              email = value;
+                            },
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: textFormDecoration.copyWith(
+                              labelText: 'Email Address',
+                              hintText: 'Enter your email',
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'please enter your password';
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              password = value;
+                            },
+                            obscureText: passwordVisible,
+                            decoration: textFormDecoration.copyWith(
+                              suffixIcon: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      passwordVisible = !passwordVisible;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    passwordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: Colors.cyan,
+                                  )),
+                              labelText: 'Password',
+                              hintText: 'Enter your password',
+                            ),
+                          ),
+                        ),
+                        HaveAccount(
+                          haveAccount: 'already have account? ',
+                          actionLabel: 'Log In',
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                                context, '/supplier_login');
+                          },
+                        ),
+                        processing == true
+                            ? const CircularProgressIndicator(
+                                color: Colors.cyan,
+                              )
+                            : AuthMainButton(
+                                mainButtonLabel: 'Sign Up',
+                                onPressed: () {
+                                  signUp();
+                                },
+                              ),
+                      ],
+                    ),
                   ),
                 ),
               ),

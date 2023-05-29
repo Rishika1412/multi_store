@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:multi_store/minor_screens/place_order.dart';
 import 'package:multi_store/models/cart_model.dart';
 import 'package:multi_store/providers/cart_provider.dart';
@@ -21,13 +22,21 @@ class _CartScreenState extends State<CartScreen> {
     return Material(
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.grey.shade200,
+          backgroundColor: Colors.blueGrey.shade100.withOpacity(0.5),
           appBar: AppBar(
-            elevation: 0,
+            elevation: 6,
             backgroundColor: Colors.white,
             leading: widget.back,
             title: const AppBarTitle(title: 'Cart'),
             actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/customer_order');
+                  },
+                  icon: const Icon(
+                    FontAwesomeIcons.bagShopping,
+                    color: Colors.black,
+                  )),
               context.watch<Cart>().getItems.isEmpty
                   ? const SizedBox()
                   : IconButton(

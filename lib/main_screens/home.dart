@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_store/galleries/accessories_gallery.dart';
 import 'package:multi_store/galleries/bags_gallery.dart';
@@ -18,6 +19,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FirebaseAnalytics.instance.setCurrentScreen(screenName: 'Home Screen');
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

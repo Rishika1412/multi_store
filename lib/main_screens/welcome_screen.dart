@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:multi_store/widgets/cyan_button.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
@@ -29,6 +31,58 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   bool processing = false;
+  CollectionReference customers =
+      FirebaseFirestore.instance.collection('customers');
+  Future<bool> checkIfDocExists(String docId) async {
+    try {
+      var doc = await customers.doc(docId).get();
+      return doc.exists;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  bool docExists = false;
+
+  Future<UserCredential> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    return await FirebaseAuth.instance
+        .signInWithCredential(credential)
+        .whenComplete(() async {
+      User user = FirebaseAuth.instance.currentUser!;
+      print(googleUser!.id);
+      print(FirebaseAuth.instance.currentUser!.uid);
+      print(googleUser);
+      print(user);
+
+      docExists = await checkIfDocExists(user.uid);
+
+      docExists == false
+          ? await customers.doc(user.uid).set({
+              'name': user.displayName,
+              'email': user.email,
+              'profileimage': user.photoURL,
+              'phone': '',
+              'address': '',
+              'cid': user.uid
+            }).then((value) => navigate())
+          : navigate();
+    });
+  }
+
+  void navigate() {
+    Navigator.pushNamed(context, '/customer_home');
+  }
+
   CollectionReference anonymous =
       FirebaseFirestore.instance.collection('anonymous');
   late String _uid;
@@ -39,6 +93,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _controller.repeat();
     super.initState();
+    FirebaseAnalytics.instance.setCurrentScreen(screenName: 'Welcome Screen');
   }
 
   @override
@@ -51,10 +106,13 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: 800,
+        width: 200,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('images/onboard/bg1.jpg'),
-                fit: BoxFit.cover)),
+                image: AssetImage('images/onboard/bg6.jpg'),
+                //fit: BoxFit.cover
+                fit: BoxFit.fill)),
         // ),
         constraints: const BoxConstraints.expand(),
         child: SafeArea(
@@ -65,12 +123,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               AnimatedTextKit(
                 animatedTexts: [
                   ColorizeAnimatedText(
-                    'WELCOME',
+                    'WELCOME TO',
                     textStyle: textStyle,
                     colors: textColors,
                   ),
                   ColorizeAnimatedText(
-                    'My Store',
+                    'Multi-Store',
                     textStyle: textStyle,
                     colors: textColors,
                   )
@@ -98,7 +156,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     animatedTexts: [
                       RotateAnimatedText('Buy'),
                       RotateAnimatedText('Shop'),
-                      RotateAnimatedText('My Store'),
+                      RotateAnimatedText('Multi-Store'),
                     ],
                     repeatForever: true,
                   ),
@@ -143,18 +201,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // AnimatedLogo(controller: _controller),
-                            // const SizedBox(
-                            //   height: 40,
-                            //   width: 40,
-                            //   child: Image(
-                            //       image:
-                            //           AssetImage('images/inapp/supplier.png')),
-                            // ),
                             CyanButton(
                                 label: 'Log In',
                                 onPressed: () {
-                                  Navigator.pushReplacementNamed(
+                                  Navigator.pushNamed(
                                       context, '/supplier_login');
                                 },
                                 width: 0.30),
@@ -166,7 +216,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                               child: CyanButton(
                                   label: 'Sign Up',
                                   onPressed: () {
-                                    Navigator.pushReplacementNamed(
+                                    Navigator.pushNamed(
                                         context, '/supplier_signup');
                                   },
                                   width: 0.30),
@@ -225,7 +275,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                             CyanButton(
                                 label: 'Log In',
                                 onPressed: () {
-                                  Navigator.pushReplacementNamed(
+                                  Navigator.pushNamed(
                                       context, '/customer_login');
                                 },
                                 width: 0.30),
@@ -237,7 +287,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                               child: CyanButton(
                                   label: 'Sign Up',
                                   onPressed: () {
-                                    Navigator.pushReplacementNamed(
+                                    Navigator.pushNamed(
                                         context, '/customer_signup');
                                   },
                                   width: 0.30),
@@ -250,75 +300,48 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 25),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 25, horizontal: 35),
                 child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GoogleFacebookLogIn(
-                        label: 'Google',
-                        onPresssed: () {},
-                        child: CircleAvatar(
-                          radius: 50,
-                          backgroundColor: Colors.black,
-                          child: const Image(
-                              height: 30,
-                              width: 30,
-                              image: AssetImage('images/inapp/google.jpg')),
-                        ),
-                      ),
-                      GoogleFacebookLogIn(
-                        label: 'Facebook',
-                        onPresssed: () {},
-                        child: CircleAvatar(
-                          backgroundColor: Colors.black,
-                          radius: 50,
-                          child: const Image(
-                              height: 30,
-                              width: 30,
-                              color: Colors.white,
-                              image: AssetImage('images/inapp/facebook.png')),
-                        ),
-                      ),
-                      processing == true
-                          ? const CircularProgressIndicator()
-                          : GoogleFacebookLogIn(
-                              label: 'Guest',
-                              onPresssed: () async {
-                                setState(() {
-                                  processing = true;
-                                });
-                                await FirebaseAuth.instance
-                                    .signInAnonymously()
-                                    .whenComplete(() async {
-                                  _uid = FirebaseAuth.instance.currentUser!.uid;
-                                  await anonymous.doc(_uid).set({
-                                    'name': '',
-                                    'email': '',
-                                    'profileimage': '',
-                                    'phone': '',
-                                    'address': '',
-                                    'cid': _uid
-                                  });
-                                });
+                  child: processing == true
+                      ? const CircularProgressIndicator()
+                      : GoogleFacebookLogIn(
+                          label: 'Guest',
+                          onPresssed: () async {
+                            setState(() {
+                              processing = true;
+                            });
+                            await FirebaseAuth.instance
+                                .signInAnonymously()
+                                .whenComplete(() async {
+                              _uid = FirebaseAuth.instance.currentUser!.uid;
+                              await anonymous.doc(_uid).set({
+                                'name': '',
+                                'email': '',
+                                'profileimage': '',
+                                'phone': '',
+                                'address': '',
+                                'cid': _uid
+                              });
+                            });
+                            setState(() {
+                              processing = false;
+                            });
 
-                                await Future.delayed(
-                                        const Duration(microseconds: 100))
-                                    .whenComplete(() =>
-                                        Navigator.pushReplacementNamed(
-                                            context, '/customer_home'));
-                              },
-                              child: CircleAvatar(
-                                radius: 50,
-                                backgroundColor: Colors.black,
-                                child: const Icon(
-                                  Icons.person,
-                                  size: 35,
-                                  color: Colors.lightBlueAccent,
-                                ),
-                              ))
-                    ],
-                  ),
+                            await Future.delayed(
+                                    const Duration(microseconds: 100))
+                                .whenComplete(() => Navigator.pushNamed(
+                                    context, '/customer_home'));
+                          },
+                          child: CircleAvatar(
+                            radius: 20,
+                            backgroundColor: Colors.black,
+                            child: const Icon(
+                              Icons.person,
+                              size: 25,
+                              color: Colors.lightBlueAccent,
+                            ),
+                          )),
                 ),
               )
             ],
@@ -367,17 +390,28 @@ class GoogleFacebookLogIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: InkWell(
-        onTap: onPresssed,
-        child: Column(
-          children: [
-            SizedBox(height: 50, width: 50, child: child),
-            // Text(
-            //   label,
-            //   style: const TextStyle(color: Colors.black),
-            // )
-          ],
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+      child: ElevatedButton(
+        style: ButtonStyle(
+            shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25)))),
+        onPressed: onPresssed,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(height: 50, width: 50, child: child),
+              Text(
+                'Anonymous',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              )
+              // Text(
+              //   label,
+              //   style: const TextStyle(color: Colors.black),
+              // )
+            ],
+          ),
         ),
       ),
     );

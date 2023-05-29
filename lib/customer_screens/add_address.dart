@@ -29,6 +29,7 @@ class _AddAddressState extends State<AddAddress> {
     return ScaffoldMessenger(
       key: scaffoldKey,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.white,

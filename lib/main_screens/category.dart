@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_store/categories/accessories_categ.dart';
 import 'package:multi_store/categories/bags_categ.dart';
@@ -41,6 +42,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       items[0].isSelected = true;
     });
     super.initState();
+    FirebaseAnalytics.instance.setCurrentScreen(screenName: 'Category Screen');
   }
 
   @override
@@ -48,8 +50,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.blueGrey.shade100.withOpacity(0.5),
         appBar: AppBar(
-          elevation: 0,
+          automaticallyImplyLeading: false,
+          elevation: 6,
           backgroundColor: Colors.white,
           title: const FakeSearch(),
         ),

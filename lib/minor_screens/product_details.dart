@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:http/http.dart';
 import 'package:multi_store/main_screens/cart.dart';
 import 'package:multi_store/minor_screens/visit_store.dart';
 import 'package:multi_store/minor_screens/full_screen_view.dart';
@@ -10,6 +14,7 @@ import 'package:multi_store/providers/wish_provider.dart';
 import 'package:multi_store/widgets/appbar_widgets.dart';
 import 'package:multi_store/widgets/snackbar.dart';
 import 'package:multi_store/widgets/cyan_button.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 import 'package:provider/provider.dart';
@@ -107,7 +112,38 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   Icons.share,
                                   color: Colors.black,
                                 ),
-                                onPressed: () {},
+                                onPressed: () async {
+                                  final box =
+                                      context.findRenderObject() as RenderBox?;
+
+                                  if (imagesList.isNotEmpty) {
+                                    var url = imagesList.first;
+                                    var response = await get(Uri.parse(url));
+                                    print(response.statusCode);
+                                    print(response.bodyBytes);
+                                    final documentDirectory = Directory(
+                                        '/storage/emulated/0/Download');
+
+                                    File file = File(
+                                      '${documentDirectory.path}/imagetest.png',
+                                    );
+                                    file.writeAsBytesSync(response.bodyBytes);
+                                    await Share.shareXFiles([XFile(file.path)],
+                                        text:
+                                            '${widget.proList['proname']} \n ${widget.proList['price'].toStringAsFixed(2)}',
+                                        subject: 'Buy | Sell | Multi-Store',
+                                        sharePositionOrigin:
+                                            box!.localToGlobal(Offset.zero) &
+                                                box.size);
+                                  } else {
+                                    await Share.share(
+                                        '${widget.proList['proname']} \n ${widget.proList['price'].toStringAsFixed(2)}',
+                                        subject: 'Buy | Sell | Multi-Store',
+                                        sharePositionOrigin:
+                                            box!.localToGlobal(Offset.zero) &
+                                                box.size);
+                                  }
+                                },
                               ),
                             ))
                       ],

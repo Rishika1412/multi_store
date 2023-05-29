@@ -29,7 +29,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
         isBottomSafeArea: true,
         isTopSafeArea: true,
         onDone: () async {
-          await Navigator.push(
+          await Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => const WelcomeScreen(),
@@ -37,7 +37,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
           );
         },
         onSkip: () async {
-          await Navigator.push(
+          await Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => const WelcomeScreen(),

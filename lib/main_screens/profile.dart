@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_store/customer_screens/address_book.dart';
@@ -42,6 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
 
     super.initState();
+    FirebaseAnalytics.instance.setCurrentScreen(screenName: 'Profile Screen');
   }
 
   @override

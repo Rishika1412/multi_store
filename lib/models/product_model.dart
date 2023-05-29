@@ -163,12 +163,12 @@ class _ProductModelState extends State<ProductModel> {
                                     ? const Icon(
                                         Icons.favorite,
                                         color: Colors.red,
-                                        size: 30,
+                                        size: 23,
                                       )
                                     : const Icon(
                                         Icons.favorite_outline,
                                         color: Colors.red,
-                                        size: 30,
+                                        size: 23,
                                       )),
                           ],
                         )

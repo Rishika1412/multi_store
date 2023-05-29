@@ -56,7 +56,7 @@ class _VisitStoreState extends State<VisitStore> {
               toolbarHeight: 100,
               flexibleSpace: data['coverimage'] == ''
                   ? Image.asset(
-                      'images/inapp/coverimage.jpg',
+                      'images/onboard/bg1.jpg',
                       fit: BoxFit.cover,
                     )
                   : Image.network(
@@ -200,15 +200,15 @@ class _VisitStoreState extends State<VisitStore> {
                 },
               ),
             ),
-            floatingActionButton: FloatingActionButton(
-              backgroundColor: Colors.green,
-              child: const Icon(
-                FontAwesomeIcons.whatsapp,
-                color: Colors.white,
-                size: 40,
-              ),
-              onPressed: () {},
-            ),
+            // floatingActionButton: FloatingActionButton(
+            //   backgroundColor: Colors.green,
+            //   child: const Icon(
+            //     FontAwesomeIcons.whatsapp,
+            //     color: Colors.white,
+            //     size: 40,
+            //   ),
+            //   onPressed: () {},
+            // ),
           );
         }
 
