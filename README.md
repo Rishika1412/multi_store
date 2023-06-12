@@ -73,7 +73,6 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 - [Firebase](https://firebase.google.com/)
 - This project was created using a Flutter ecommerce app template and was further developed and customized for the group project.
 - Flutter - Firebase - MySQL : Multi-store App(https://www.udemy.com/course/flutter-multi-store/) by Salah Shams(https://www.udemy.com/course/flutter-multi-store/#instructor-1)
-- Flutter - Firebase - MySQL : Multi-store App() by Salah Shams(https://www.udemy.com/course/flutter-multi-store/#instructor-1)
 
 ## Contact
 
