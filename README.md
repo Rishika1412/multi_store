@@ -62,6 +62,16 @@ class FirebaseConfig {
 }
 ```
 
+
+## Screenshots
+
+Here are some screenshots from the app:
+
+| Launch Screen | Login/Sign Up Screen | Homepage |
+| --- | --- | --- |
+| ![Launch Screen](screenshots/launch_screen.png) | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
+
+
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Make sure to follow the existing code style and guidelines.
@@ -79,3 +89,4 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 If you have any questions or
 
  need any assistance, feel free to reach out to Rishika Garg at [gargrishika5@gmail.com](mailto:gargrishika5@gmail.com).
+ 
