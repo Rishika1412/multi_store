@@ -69,9 +69,9 @@ Here are some screenshots from the app:
 
 | Launch Screen | Login/Sign Up Screen | Homepage |
 | --- | --- | --- |
-| <img src="path/to/your/image.png" alt="Image" width="400" height="300" /> | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
-| ![Launch Screen2](screenshots/2.jpg =400x300) | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
-| ![Launch Screen3](screenshots/3.jpg =400x300) | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
+| <img src="screenshots/1.jpg" alt="Launch Screen 1" width="400" height="300" /> | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
+| <img src="screenshots/2.jpg" alt="Launch Screen 2" width="400" height="300" /> | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
+| <img src="screenshots/3.jpg" alt="Launch Screen 3" width="400" height="300" /> | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
 
 
 
