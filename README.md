@@ -69,10 +69,10 @@ Here are some screenshots from the app:
 
 | Launch Screen | Login/Sign Up Screen | Homepage |
 | --- | --- | --- |
-| <img src="screenshots/1.jpg" alt="Launch Screen 1" width="250" height="400" /> | <img src="screenshots/5.jpg" alt="Login/Sign Up Screen 1" width="250" height="400" />  | <img src="screenshots/11.jpg" alt="Home Page Screen" width="250" height="400" /> |
-| <img src="screenshots/3.jpg" alt="Launch Screen 2" width="250" height="400" /> | <img src="screenshots/6.jpg" alt="Login/Sign Up Screen 2" width="250" height="400" /> |  <img src="screenshots/7.jpg" alt="Category Screen" width="250" height="400" /> |
-| <img src="screenshots/4.jpg" alt="Launch Screen 3" width="250" height="400" /> | <img src="screenshots/8.jpg" alt="Login/Sign Up Screen 3" width="250" height="400" /> |  <img src="screenshots/10.jpg" alt="Details Screen" width="250" height="400" /> |
-| <img src="screenshots/2.jpg" alt="Launch Screen 4" width="250" height="400" /> | <img src="screenshots/9.jpg" alt="Profile/Logout Screen" width="250" height="400" /> | - |
+| <img src="screenshots/1.jpg" alt="Launch Screen 1" width="250" height="500" /> | <img src="screenshots/5.jpg" alt="Login/Sign Up Screen 1" width="250" height="500" />  | <img src="screenshots/11.jpg" alt="Home Page Screen" width="250" height="500" /> |
+| <img src="screenshots/3.jpg" alt="Launch Screen 2" width="250" height="500" /> | <img src="screenshots/6.jpg" alt="Login/Sign Up Screen 2" width="250" height="500" /> |  <img src="screenshots/7.jpg" alt="Category Screen" width="250" height="500" /> |
+| <img src="screenshots/4.jpg" alt="Launch Screen 3" width="250" height="500" /> | <img src="screenshots/8.jpg" alt="Login/Sign Up Screen 3" width="250" height="500" /> |  <img src="screenshots/10.jpg" alt="Details Screen" width="250" height="500" /> |
+| <img src="screenshots/2.jpg" alt="Launch Screen 4" width="250" height="500" /> | <img src="screenshots/9.jpg" alt="Profile/Logout Screen" width="250" height="500" /> | - |
 
 
 
