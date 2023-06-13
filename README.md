@@ -69,12 +69,10 @@ Here are some screenshots from the app:
 
 | Launch Screen | Login/Sign Up Screen | Homepage |
 | --- | --- | --- |
-| ![Launch Screen](screenshots/launch_screen.png) | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
+| ![Launch Screen1](screenshots/1.png) | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
+| ![Launch Screen2](screenshots/2.png) | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
+| ![Launch Screen3](screenshots/3.png) | ![Login/Sign Up Screen](screenshots/login_screen.png) | ![Homepage](screenshots/homepage.png) |
 
-
-## Contributing
-
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Make sure to follow the existing code style and guidelines.
 
 
 ## Acknowledgements
